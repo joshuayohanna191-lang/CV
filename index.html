@@ -3,42 +3,119 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Yohanna Joshua — Resume</title>
+  <title>CV Builder — Yohanna Joshua</title>
 
-  <!-- Font (similar clean modern style) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root{
-      --ink:#111827;
-      --muted:#4b5563;
-      --muted2:#6b7280;
-      --line:#e5e7eb;
-      --red:#c1121f;
-      --bar:#111111;
-      --paper:#ffffff;
-      --bg:#f3f4f6;
+      --ink:#111827; --muted:#4b5563; --muted2:#6b7280;
+      --line:#e5e7eb; --red:#c1121f; --bar:#111111;
+      --paper:#ffffff; --bg:#f3f4f6;
+      --blue:#2563eb;
     }
-
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
     body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
-      color:var(--ink);
-      background:var(--bg);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif;
+      color:var(--ink); background:var(--bg);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Page */
-    .wrap{
-      max-width: 920px;
-      margin: 28px auto;
-      padding: 0 14px;
+    /* Layout */
+    .app{
+      max-width: 1220px; margin: 20px auto; padding: 0 14px;
+      display:grid; grid-template-columns: 420px 1fr; gap: 16px;
+      align-items:start;
     }
+    @media (max-width: 1020px){ .app{ grid-template-columns: 1fr; } }
+
+    /* Left panel */
+    .panel{
+      background:#fff; border:1px solid var(--line); border-radius:14px;
+      padding: 14px; box-shadow: 0 12px 30px rgba(17,24,39,.06);
+      position: sticky; top: 14px;
+      height: fit-content;
+    }
+    @media (max-width: 1020px){ .panel{ position: static; } }
+
+    .panelHead{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom: 10px;
+    }
+    .panel h2{
+      margin:0; font-size:14px; letter-spacing:.08em; text-transform:uppercase; font-weight:800;
+    }
+    .tiny{
+      font-size:12px; color:var(--muted2); line-height:1.35;
+      margin: 0 0 10px 0;
+    }
+
+    .group{
+      border-top:1px solid var(--line);
+      padding-top:12px; margin-top:12px;
+    }
+    .groupTitle{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+    }
+    .groupTitle h3{
+      margin:0; font-size:12px; color:var(--muted2);
+      letter-spacing:.08em; text-transform:uppercase; font-weight:900;
+    }
+    .label{
+      font-size:12px; color:var(--muted2); font-weight:800; margin: 10px 0 6px 0;
+    }
+    input, textarea, select{
+      width:100%; font: inherit; font-size:13px; padding:10px 10px;
+      border-radius:10px; border:1px solid var(--line); outline:none;
+      background:#fff;
+    }
+    textarea{ min-height: 74px; resize: vertical; }
+    .row2{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .row3{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .btn{
+      appearance:none; border:0; border-radius:12px;
+      background:#0f172a; color:#fff; font-weight:900;
+      padding: 12px 14px; cursor:pointer;
+      display:flex; justify-content:center; align-items:center; gap:10px;
+      box-shadow: 0 10px 20px rgba(2,6,23,.12);
+      width:100%;
+    }
+    .btn:hover{ background:#111c33; }
+    .btnSecondary{
+      background:#fff; color:#0f172a; border:1px solid var(--line);
+      box-shadow:none;
+    }
+    .btnMini{
+      width:auto; padding:8px 10px; border-radius:10px;
+      font-size:12px; font-weight:900;
+      border:1px solid var(--line);
+      background:#fff; color:#0f172a;
+      cursor:pointer;
+    }
+    .btnMini:hover{ border-color:#cbd5e1; }
+    .btnDanger{
+      background:#fff; color:#991b1b; border:1px solid #fecaca;
+    }
+    .btnDanger:hover{ border-color:#fca5a5; }
+    .itemCard{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:10px;
+      margin-top:10px;
+      background:#fafafa;
+    }
+    .itemCardHead{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom:8px;
+    }
+    .itemCardHead strong{ font-size:13px; }
+    .mutedHint{ font-size:12px; color:var(--muted2); margin:6px 0 0 0; }
+
+    /* Right preview */
+    .wrap{ padding: 0 6px; }
     .sheet{
       background:var(--paper);
       border:1px solid var(--line);
@@ -46,445 +123,974 @@
       padding: 28px 28px 22px;
       box-shadow: 0 12px 30px rgba(17,24,39,.06);
     }
-
-    /* Header */
     .name{
       margin: 0 0 10px 0;
-      font-size: 40px;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      font-weight: 800;
-      text-transform: uppercase;
+      font-size: 40px; line-height: 1.05; letter-spacing: -0.02em;
+      font-weight: 800; text-transform: uppercase;
     }
     .name .red{ color:var(--red); }
-
     .contactbar{
-      background:var(--bar);
-      color:#fff;
-      border-radius:8px;
-      padding:10px 12px;
-      font-size:13px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      align-items:center;
+      background:var(--bar); color:#fff; border-radius:8px;
+      padding:10px 12px; font-size:13px;
+      display:flex; flex-wrap:wrap; gap:8px; align-items:center;
     }
-    .pill{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:2px 0;
-      white-space:nowrap;
-    }
-    .sep{
-      opacity:.45;
-      padding:0 6px;
-      user-select:none;
-    }
-    .contactbar a{
-      color:#fff;
-      text-decoration:none;
-      border-bottom:1px solid rgba(255,255,255,.35);
-    }
+    .pill{ display:inline-flex; gap:8px; align-items:center; padding:2px 0; white-space:nowrap; }
+    .sep{ opacity:.45; padding:0 6px; user-select:none; }
+    .contactbar a{ color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.35); }
 
-    /* Print button */
-    .actions{
-      display:flex;
-      justify-content:flex-end;
-      margin-top:14px;
-    }
-    #printBtn{
-      appearance:none;
-      border:0;
-      background:#0f172a;
-      color:#fff;
-      font-weight:700;
-      font-size:13px;
-      padding:10px 14px;
-      border-radius:10px;
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      box-shadow: 0 10px 20px rgba(2,6,23,.12);
-    }
-    #printBtn:hover{ background:#111c33; }
-    #printBtn:focus{ outline: 3px solid rgba(59,130,246,.35); outline-offset:2px; }
-    .btnIcon{ width:16px; height:16px; display:block; }
-
-    /* Sections */
     .section{ margin-top: 18px; }
     .section-title{
-      margin: 0;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: .08em;
+      margin: 0; font-size: 14px; font-weight: 800; letter-spacing: .08em;
       text-transform: uppercase;
     }
-    .underline{
-      height:2px;
-      background:var(--red);
-      margin: 8px 0 12px;
-      border-radius: 999px;
-      opacity:.9;
-    }
-
-    .p{
-      margin: 0 0 10px 0;
-      color:var(--muted);
-      font-size: 13.5px;
-      line-height: 1.65;
-    }
-
-    /* Skills bullets */
+    .underline{ height:2px; background:var(--red); margin: 8px 0 12px; border-radius:999px; opacity:.9; }
+    .p{ margin: 0 0 10px 0; color:var(--muted); font-size: 13.5px; line-height: 1.65; }
     .bullets{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px 30px;
-      padding-left: 18px;
-      margin: 0;
-      color:var(--muted);
-      font-size: 13.5px;
-      line-height: 1.6;
+      display:grid; grid-template-columns: 1fr 1fr; gap: 10px 30px;
+      padding-left: 18px; margin: 0; color:var(--muted);
+      font-size: 13.5px; line-height: 1.6;
     }
-    .bullets li{ margin: 0; }
-    @media (max-width: 780px){
-      .bullets{ grid-template-columns: 1fr; }
-      .name{ font-size:34px; }
-      .sheet{ padding:20px; }
-    }
+    .bullets li{ margin:0; }
+    @media (max-width: 780px){ .bullets{ grid-template-columns: 1fr; } }
 
-    /* Timeline rows (role left, date right) */
     .row{
-      display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:12px;
-      margin: 0 0 6px 0;
+      display:flex; align-items:baseline; justify-content:space-between;
+      gap:12px; margin: 0 0 6px 0;
     }
-    .row .left{
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--ink);
-    }
-    .row .right{
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--muted2);
-      white-space:nowrap;
-    }
-    .sub{
-      margin: 0 0 10px 0;
-      color:var(--muted);
-      font-size: 13.5px;
-      line-height: 1.6;
-    }
-    .smallcap{
-      font-weight: 800;
-      color: var(--ink);
-    }
-    .list{
-      margin: 8px 0 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.6;
-    }
+    .row .left{ font-size: 14px; font-weight: 800; color: var(--ink); }
+    .row .right{ font-size: 12.5px; font-weight: 700; color: var(--muted2); white-space:nowrap; }
+    .sub{ margin: 0 0 10px 0; color:var(--muted); font-size: 13.5px; line-height: 1.6; }
+    .smallcap{ font-weight: 800; color: var(--ink); }
+    .list{ margin: 8px 0 0 0; padding-left: 18px; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
     .list li{ margin: 4px 0; }
-
-    .block{
-      padding: 10px 0 2px;
-      border-bottom: 1px solid var(--line);
-    }
+    .block{ padding: 10px 0 2px; border-bottom: 1px solid var(--line); }
     .block:last-child{ border-bottom:0; }
 
-    /* References cards */
     .ref{
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px 14px;
-      background: #fafafa;
-      margin-top: 10px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px 14px;
+      background:#fafafa;
+      margin-top:10px;
     }
-    .ref .who{ font-weight: 800; color: var(--ink); margin: 0 0 6px 0; }
-    .ref .line{ margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.55; }
+    .ref .who{ font-weight:800; color:var(--ink); margin:0 0 6px 0; }
+    .ref .line{ margin:0; color:var(--muted); font-size:13.5px; line-height:1.55; }
+    .chipList{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin:0; padding:0; list-style:none;
+    }
+    .chip{
+      background:#f8fafc;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:13px;
+      color:var(--muted);
+    }
 
-    /* Print */
+    /* Print rules */
     @media print{
       body{ background:#fff; }
-      .wrap{ margin:0; max-width:none; padding:0; }
+      .panel{ display:none !important; }
+      .app{ display:block; margin:0; padding:0; }
+      .wrap{ padding:0; }
       .sheet{ border:0; border-radius:0; box-shadow:none; padding: 0.6in; }
-      #printBtn{ display:none !important; }
-      .actions{ display:none !important; }
+      #printBtnPreview{ display:none !important; }
       a{ color: inherit !important; text-decoration: none !important; border:0 !important; }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="sheet">
+  <div class="app">
+    <!-- LEFT: BUILDER -->
+    <aside class="panel">
+      <div class="panelHead">
+        <h2>CV Builder</h2>
+        <button class="btnMini" id="saveBtn" type="button" title="Save to this browser">Save</button>
+      </div>
+      <p class="tiny">
+        Everything is editable. Use <b>Add</b>/<b>Remove</b> buttons to customize sections.
+      </p>
 
-      <h1 class="name">
-        YOHANNA <span class="red">JOSHUA</span>
-      </h1>
+      <button class="btn" id="printBtnForm" type="button">Print / Save as PDF</button>
+      <div style="height:10px"></div>
+      <button class="btn btnSecondary" id="resetBtn" type="button">Reset to Current Info</button>
+      <p class="mutedHint">Tip: “Save” stores your edits in this browser (localStorage).</p>
 
-      <div class="contactbar" aria-label="Contact information">
-        <span class="pill">Government Girls Secondary School Daura, Daura Local Government.</span>
-        <span class="sep">|</span>
-        <span class="pill">07046593428, 07017803690.</span>
-        <span class="sep">|</span>
-        <span class="pill">Email: <a href="mailto:joshuayohanna191@gmail.com">joshuayohanna191@gmail.com</a></span>
+      <!-- BASIC -->
+      <div class="group">
+        <div class="groupTitle">
+          <h3>Header</h3>
+        </div>
+
+        <div class="row2">
+          <div>
+            <p class="label">First Name</p>
+            <input id="firstName" />
+          </div>
+          <div>
+            <p class="label">Last Name</p>
+            <input id="lastName" />
+          </div>
+        </div>
+
+        <p class="label">Address Line</p>
+        <input id="addressLine" />
+
+        <div class="row2">
+          <div>
+            <p class="label">Phone</p>
+            <input id="phone" />
+          </div>
+          <div>
+            <p class="label">Email</p>
+            <input id="email" />
+          </div>
+        </div>
       </div>
 
-      <div class="actions">
-        <button id="printBtn" type="button" aria-label="Print or Save as PDF">
-          <svg class="btnIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M6 9V2h12v7" />
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-            <path d="M6 14h12v8H6z" />
-          </svg>
-          Print / Save as PDF
-        </button>
+      <!-- SUMMARY -->
+      <div class="group">
+        <div class="groupTitle">
+          <h3>Professional Summary</h3>
+        </div>
+        <p class="label">Summary</p>
+        <textarea id="summary"></textarea>
       </div>
 
-      <!-- PROFESSIONAL SUMMARY (UPDATED FOR SITE ENGINEER) -->
-      <section class="section">
-        <h2 class="section-title">Professional Summary</h2>
-        <div class="underline"></div>
-        <p class="p" style="margin-bottom:0;">
-          Site Engineer with hands-on experience supporting construction activities, supervising site operations, and coordinating materials and workforce to maintain quality and safety standards. Skilled in site documentation, inventory/material control, and effective communication with supervisors, engineers, and site teams to keep work progressing on schedule. Strong technical foundation with B.Eng Chemical Engineering, AutoCAD training, and HSE knowledge, with a track record of reliability in fast-paced project environments.
-        </p>
-      </section>
-
-      <!-- SKILLS (TUNED FOR SITE ENGINEER) -->
-      <section class="section">
-        <h2 class="section-title">Skills</h2>
-        <div class="underline"></div>
-
-        <ul class="bullets">
-          <li><span class="smallcap">Site Supervision:</span> Coordinating day-to-day site activities, monitoring workmanship, and supporting engineers/supervisors to meet project targets.</li>
-          <li><span class="smallcap">Materials & Inventory Control:</span> Storekeeping, issuing materials, tracking usage, and maintaining stock availability for continuous site operations.</li>
-          <li><span class="smallcap">HSE & Compliance:</span> Basic safety enforcement, hazard awareness, and supporting safe work practices and site orderliness.</li>
-          <li><span class="smallcap">Documentation & Reporting:</span> Record keeping, daily site updates, and communication across teams for organized project tracking.</li>
-          <li><span class="smallcap">Technical Tools:</span> AutoCAD, Microsoft Word, Microsoft Excel.</li>
-          <li><span class="smallcap">Communication:</span> Clear written and verbal communication; strong teamwork and coordination skills.</li>
-        </ul>
-      </section>
-
-      <!-- WORK HISTORY (UPDATED AL-MANSOUR ROLE WITH ACHIEVEMENT BULLETS) -->
-      <section class="section">
-        <h2 class="section-title">Work History</h2>
-        <div class="underline"></div>
-
-        <div class="block">
-          <div class="row">
-            <div class="left">Al-Mansour Construction (Nig) Ltd.</div>
-            <div class="right"></div>
-          </div>
-
-          <div class="row" style="margin-top:8px;">
-            <div class="left" style="font-weight:700;">Site Engineer</div>
-            <div class="right">Feb 2022 – Jun 2023</div>
-          </div>
-          <p class="sub">Shagamu Site, Ogun State</p>
-          <ul class="list">
-            <li>Supported daily site execution by coordinating materials, labor, and work activities to maintain steady progress on construction tasks.</li>
-            <li>Assisted with on-site supervision and quality checks, ensuring workmanship aligned with project requirements and instructions from senior engineers.</li>
-            <li>Maintained daily site records and updates to support tracking of activities, resource usage, and work completion status.</li>
-            <li>Promoted safe work practices by reporting hazards and supporting compliance with basic HSE rules and site housekeeping standards.</li>
-          </ul>
-
-          <div class="row" style="margin-top:14px;">
-            <div class="left" style="font-weight:700;">Supervisor / Storekeeper</div>
-            <div class="right">Jun 2023 – Apr 2025</div>
-          </div>
-          <p class="sub">Lekki-Garden (Banana Island) • Karishma CDK (Shagamu, Ogun)</p>
-          <ul class="list">
-            <li>Supervised site support activities and ensured timely availability of materials/tools required for ongoing site works.</li>
-            <li>Managed store operations: received, issued, and tracked construction materials to reduce shortages and improve accountability.</li>
-            <li>Coordinated with site leadership to plan material requests and ensure uninterrupted workflow across site teams.</li>
-            <li>Kept inventory records and assisted with reporting to support cost control and proper material utilization.</li>
-          </ul>
+      <!-- SKILLS -->
+      <div class="group">
+        <div class="groupTitle">
+          <h3>Skills</h3>
+          <button class="btnMini" id="addSkillBtn" type="button">+ Add</button>
         </div>
+        <div id="skillsForm"></div>
+      </div>
 
-        <div class="block">
-          <div class="row">
-            <div class="left">Maiduguri Flour Mill.</div>
-            <div class="right"></div>
-          </div>
-
-          <div class="row" style="margin-top:8px;">
-            <div class="left" style="font-weight:700;">Production Engineer</div>
-            <div class="right">Nov 2021 – Jun 2022</div>
-          </div>
-
-          <p class="sub"><span class="smallcap">Job Done:</span></p>
-          <ul class="list">
-            <li>Production of massa flour and massa vita, after NNPC filling station Busari Road,</li>
-            <li>Maiduguri Borno state.</li>
-          </ul>
+      <!-- WORK HISTORY -->
+      <div class="group">
+        <div class="groupTitle">
+          <h3>Work History</h3>
+          <button class="btnMini" id="addWorkBtn" type="button">+ Add</button>
         </div>
-
-        <div class="block">
-          <div class="row">
-            <div class="left">OXFAM NGO Maiduguri Borno State.</div>
-            <div class="right"></div>
-          </div>
-
-          <div class="row" style="margin-top:8px;">
-            <div class="left" style="font-weight:700;">Hygiene Promotion Assistant</div>
-            <div class="right">Jul 2020 – Nov 2021</div>
-          </div>
-
-          <p class="sub"><span class="smallcap">Job Done:</span></p>
-          <ul class="list">
-            <li>Educating and Distribution of Food items at Gajigana Maiduguri Borno State</li>
-            <li>Distribution of Food items at Monguno Maiduguri Borno State.</li>
-          </ul>
-        </div>
-
-        <div class="block">
-          <div class="row">
-            <div class="left">Today’s Super Store Behind Government House Maiduguri Borno State.</div>
-            <div class="right"></div>
-          </div>
-
-          <div class="row" style="margin-top:8px;">
-            <div class="left" style="font-weight:700;">Sales Representative</div>
-            <div class="right">2019 – 2021</div>
-          </div>
-
-          <p class="sub"><span class="smallcap">Job Done:</span></p>
-          <ul class="list">
-            <li>Cleaning, Arranging, Checking of expiring dates and selling of groceries. 2019–2020</li>
-            <li>Merchandiser. 2020–2021</li>
-          </ul>
-        </div>
-      </section>
+        <div id="workForm"></div>
+      </div>
 
       <!-- EDUCATION -->
-      <section class="section">
-        <h2 class="section-title">Education</h2>
-        <div class="underline"></div>
-
-        <div class="block">
-          <div class="row">
-            <div class="left">University of Maiduguri Borno State</div>
-            <div class="right">2022</div>
-          </div>
-          <p class="sub">B.Eng Chemical Engineering (Second Class Lower (3.45))</p>
+      <div class="group">
+        <div class="groupTitle">
+          <h3>Education</h3>
+          <button class="btnMini" id="addEduBtn" type="button">+ Add</button>
         </div>
-
-        <div class="block">
-          <div class="row">
-            <div class="left">Federal Science and Technical College Jalingo, Taraba State</div>
-            <div class="right">2016</div>
-          </div>
-          <p class="sub">Senior School Certificate Examination (SSCE).</p>
-        </div>
-
-        <div class="block">
-          <div class="row">
-            <div class="left">Anchor Model School, Chibok Local Government Borno State</div>
-            <div class="right">2010</div>
-          </div>
-          <p class="sub">Primary School Leaving Certificate.</p>
-        </div>
-      </section>
+        <div id="eduForm"></div>
+      </div>
 
       <!-- CERTIFICATIONS -->
-      <section class="section">
-        <h2 class="section-title">Certifications</h2>
-        <div class="underline"></div>
-        <ul class="list" style="margin-top:0;">
-          <li>National Youth Service Corp (2025)</li>
-          <li>Insight Global Training Academy — Certificate in Environment, Health &amp; Safety Training. (2024)</li>
-          <li>University of Maiduguri Borno State — Certificate of Proficiency in Aspen Engineering Software Suit. (2023)</li>
-          <li>University of Maiduguri Borno State — Certificate in AutoCAD. (2021)</li>
-          <li>American Institution of Chemical Engineering Academy — Certificate in Risk Based Process Safety. (2021)</li>
-        </ul>
-      </section>
+      <div class="group">
+        <div class="groupTitle">
+          <h3>Certifications</h3>
+          <button class="btnMini" id="addCertBtn" type="button">+ Add</button>
+        </div>
+        <div id="certForm"></div>
+      </div>
 
       <!-- PROFESSIONAL BODIES -->
-      <section class="section">
-        <h2 class="section-title">Professional Bodies</h2>
-        <div class="underline"></div>
-        <ul class="list" style="margin-top:0;">
-          <li>Graduate Member of Nigerian Society of Engineers</li>
-          <li>Member of Nigerian Society of Chemical Engineers</li>
-          <li>Member of International Association of Engineers</li>
-          <li>Member of American Institution of Chemical Engineers</li>
-        </ul>
-      </section>
+      <div class="group">
+        <div class="groupTitle">
+          <h3>Professional Bodies</h3>
+          <button class="btnMini" id="addBodyBtn" type="button">+ Add</button>
+        </div>
+        <div id="bodiesForm"></div>
+      </div>
 
       <!-- PROJECTS -->
-      <section class="section">
-        <h2 class="section-title">Projects and Volunteering</h2>
-        <div class="underline"></div>
-
-        <div class="block">
-          <div class="row">
-            <div class="left">Group Project:</div>
-            <div class="right">2018</div>
-          </div>
-          <p class="sub">Designing of Heat Exchanger Using AutoCAD.</p>
+      <div class="group">
+        <div class="groupTitle">
+          <h3>Projects</h3>
+          <button class="btnMini" id="addProjectBtn" type="button">+ Add</button>
         </div>
-
-        <div class="block">
-          <div class="row">
-            <div class="left">Design Project:</div>
-            <div class="right">2022</div>
-          </div>
-          <p class="sub">Design a Plant that produces 250tonnes of Acrylic acid per day (not yet Published).</p>
-        </div>
-
-        <div class="block">
-          <div class="row">
-            <div class="left">Research Project:</div>
-            <div class="right">2024</div>
-          </div>
-          <p class="sub">Extraction of Groundnut oil using Chemical and Mechanical Techniques and, Their Characterization (not yet Published).</p>
-        </div>
-      </section>
+        <div id="projectsForm"></div>
+      </div>
 
       <!-- HOBBIES -->
-      <section class="section">
-        <h2 class="section-title">Hobbies</h2>
-        <div class="underline"></div>
-        <p class="p" style="margin-bottom:0;">Drafting and listening to music</p>
-      </section>
+      <div class="group">
+        <div class="groupTitle">
+          <h3>Hobbies</h3>
+        </div>
+        <p class="label">Hobbies</p>
+        <input id="hobbies" />
+      </div>
 
       <!-- REFERENCES -->
-      <section class="section">
-        <h2 class="section-title">References</h2>
-        <div class="underline"></div>
-
-        <div class="ref">
-          <p class="who">Engr. SUNDAY OLUWOLE EKUNDARE (Almansour Engineering and Contracting limited).</p>
-          <p class="line">Address: Victoria Island Lagos</p>
-          <p class="line">Phone number: 08035125520, 08097348913</p>
-          <p class="line">Email: <a href="mailto:sunekonsult2013@gmail.com">sunekonsult2013@gmail.com</a></p>
+      <div class="group">
+        <div class="groupTitle">
+          <h3>References</h3>
+          <button class="btnMini" id="addRefBtn" type="button">+ Add</button>
         </div>
 
-        <div class="ref">
-          <p class="who">Engr.Dr. Aliyu Abdulhameed Bello (Head of Department of Chemical Engineering)</p>
-          <p class="line">Address: 303 Housing Estate Opposite Gate one Unimaid.</p>
-          <p class="line">Phone Number: 09070013463</p>
-          <p class="line">Email: <a href="mailto:aliyub@unimaid.edu.ng">aliyub@unimaid.edu.ng</a></p>
-        </div>
-      </section>
+        <p class="label">References Mode</p>
+        <select id="refMode">
+          <option value="fill">Fill references</option>
+          <option value="request">Show “References are available on request.”</option>
+        </select>
 
-    </div>
+        <div id="refsForm"></div>
+      </div>
+    </aside>
+
+    <!-- RIGHT: PREVIEW -->
+    <main class="wrap">
+      <div class="sheet" id="resumeSheet">
+        <h1 class="name">
+          <span id="prevFirst"></span> <span class="red" id="prevLast"></span>
+        </h1>
+
+        <div class="contactbar" aria-label="Contact information">
+          <span class="pill" id="prevAddress"></span>
+          <span class="sep">|</span>
+          <span class="pill" id="prevPhone"></span>
+          <span class="sep">|</span>
+          <span class="pill">
+            Email: <a id="prevEmailLink" href="#"><span id="prevEmail"></span></a>
+          </span>
+        </div>
+
+        <section class="section">
+          <h2 class="section-title">Professional Summary</h2>
+          <div class="underline"></div>
+          <p class="p" id="prevSummary"></p>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Skills</h2>
+          <div class="underline"></div>
+          <ul class="bullets" id="prevSkills"></ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Work History</h2>
+          <div class="underline"></div>
+          <div id="prevWork"></div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Education</h2>
+          <div class="underline"></div>
+          <div id="prevEdu"></div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Certifications</h2>
+          <div class="underline"></div>
+          <ul class="list" id="prevCerts"></ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Professional Bodies</h2>
+          <div class="underline"></div>
+          <ul class="list" id="prevBodies"></ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Projects and Volunteering</h2>
+          <div class="underline"></div>
+          <div id="prevProjects"></div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Hobbies</h2>
+          <div class="underline"></div>
+          <p class="p" id="prevHobbies" style="margin-bottom:0;"></p>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">References</h2>
+          <div class="underline"></div>
+
+          <div id="prevRefsFill"></div>
+          <p class="p" id="prevRefsRequest" style="display:none; margin-bottom:0;">
+            References are available on request.
+          </p>
+        </section>
+
+        <div style="margin-top:16px; display:flex; justify-content:flex-end;">
+          <button class="btn" id="printBtnPreview" type="button" style="max-width: 220px;">
+            Print / Save as PDF
+          </button>
+        </div>
+      </div>
+    </main>
   </div>
 
   <script>
-    const btn = document.getElementById("printBtn");
-    btn.addEventListener("click", () => {
-      // Hide immediately after click (and also hidden in print via CSS)
-      btn.style.display = "none";
-      window.print();
-    });
+    // --------- DEFAULT DATA (prefilled with your current resume content)
+    const DEFAULT_DATA = {
+      header: {
+        firstName: "YOHANNA",
+        lastName: "JOSHUA",
+        addressLine: "Government Girls Secondary School Daura, Daura Local Government.",
+        phone: "07046593428, 07017803690.",
+        email: "joshuayohanna191@gmail.com",
+      },
+      summary:
+        "Site Engineer with hands-on experience supporting construction activities, supervising site operations, and coordinating materials and workforce to maintain quality and safety standards. Skilled in site documentation, inventory/material control, and effective communication with supervisors, engineers, and site teams to keep work progressing on schedule. Strong technical foundation with B.Eng Chemical Engineering, AutoCAD training, and HSE knowledge, with a track record of reliability in fast-paced project environments.",
+      skills: [
+        { text: "Management/Administrative Skills: Driven, energetic and self-motivated team player with leadership attribute, willingness to make personal sacrifices for the good of the large unit. Strong analytical skill for time management." },
+        { text: "Public Relation and Social Skill: Excellent communication skills; fluency in written and spoken English; good customer relations and organizational integration." },
+        { text: "Data Processing: Proficiency in Microsoft Word, Microsoft Excel and AutoCAD." },
+        { text: "Core Value: Sincerity, diligence and dedication to work." },
+      ],
+      work: [
+        {
+          company: "Al-Mansour Construction (Nig) Ltd.",
+          roles: [
+            {
+              title: "Site Engineer",
+              dates: "February 2022 – June 2023",
+              location: "Shagamu Site, Ogun State (2022–2023)",
+              bullets: [
+                "Supported day-to-day site execution by coordinating materials, labor, and work activities to maintain steady progress on construction tasks.",
+                "Assisted with on-site supervision and basic quality checks, ensuring workmanship aligned with project instructions from senior engineers.",
+                "Maintained daily site records and updates to support tracking of activities, resource usage, and completion status.",
+                "Promoted safe work practices by reporting hazards and supporting compliance with basic HSE rules and site housekeeping standards."
+              ]
+            },
+            {
+              title: "Supervisor / Storekeeper",
+              dates: "June 2023 – April 2025",
+              location: "Lekki-Garden (Banana Island) • Karishma CDK (Shagamu, Ogun)",
+              bullets: [
+                "Managed store operations: received, issued and tracked materials/tools to reduce shortages and improve accountability.",
+                "Coordinated material requests with site leadership to support uninterrupted workflow across site teams.",
+                "Kept inventory records and assisted reporting to support cost control and proper material utilization."
+              ]
+            }
+          ]
+        },
+        {
+          company: "Maiduguri Flour Mill.",
+          roles: [
+            {
+              title: "Production Engineer",
+              dates: "November 2021 – June 2022",
+              location: "After NNPC filling station Busari Road, Maiduguri, Borno State",
+              bullets: [
+                "Supported production of massa flour and massa vita and assisted daily operations to maintain output and process flow.",
+                "Followed basic safety and housekeeping practices to support a safe and efficient production environment."
+              ]
+            }
+          ]
+        },
+        {
+          company: "OXFAM NGO Maiduguri Borno State.",
+          roles: [
+            {
+              title: "Hygiene Promotion Assistant",
+              dates: "July 2020 – November 2021",
+              location: "Gajigana and Monguno, Maiduguri, Borno State",
+              bullets: [
+                "Educated communities on hygiene practices and supported distribution activities.",
+                "Supported food item distribution at Gajigana and Monguno."
+              ]
+            }
+          ]
+        },
+        {
+          company: "Today’s Super Store Behind Government House Maiduguri Borno State.",
+          roles: [
+            {
+              title: "Sales Representative / Merchandiser",
+              dates: "2019 – 2021",
+              location: "Maiduguri, Borno State",
+              bullets: [
+                "Handled cleaning, arranging, checking expiry dates and selling groceries (2019–2020).",
+                "Worked as merchandiser (2020–2021)."
+              ]
+            }
+          ]
+        }
+      ],
+      education: [
+        { school: "University of Maiduguri Borno State", year: "2022", detail: "B.Eng Chemical Engineering (Second Class Lower (3.45))" },
+        { school: "Federal Science and Technical College Jalingo, Taraba State", year: "2016", detail: "Senior School Certificate Examination (SSCE)." },
+        { school: "Anchor Model School, Chibok Local Government Borno State", year: "2010", detail: "Primary School Leaving Certificate." }
+      ],
+      certifications: [
+        "National Youth Service Corp (2025)",
+        "Insight Global Training Academy — Certificate in Environment, Health & Safety Training. (2024)",
+        "University of Maiduguri Borno State — Certificate of Proficiency in Aspen Engineering Software Suit. (2023)",
+        "University of Maiduguri Borno State — Certificate in AutoCAD. (2021)",
+        "American Institution of Chemical Engineering Academy — Certificate in Risk Based Process Safety. (2021)"
+      ],
+      bodies: [
+        "Graduate Member of Nigerian Society of Engineers",
+        "Member of Nigerian Society of Chemical Engineers",
+        "Member of International Association of Engineers",
+        "Member of American Institution of Chemical Engineers"
+      ],
+      projects: [
+        { year: "2018", title: "Group Project", description: "Designing of Heat Exchanger Using AutoCAD." },
+        { year: "2022", title: "Design Project", description: "Design a Plant that produces 250tonnes of Acrylic acid per day (not yet Published)." },
+        { year: "2024", title: "Research Project", description: "Extraction of Groundnut oil using Chemical and Mechanical Techniques and, Their Characterization (not yet Published)." }
+      ],
+      hobbies: "Drafting and listening to music",
+      references: {
+        mode: "fill",
+        items: [
+          {
+            who: "Engr. SUNDAY OLUWOLE EKUNDARE (Almansour Engineering and Contracting limited).",
+            address: "Address: Victoria Island Lagos",
+            phone: "Phone number: 08035125520, 08097348913",
+            email: "sunekonsult2013@gmail.com"
+          },
+          {
+            who: "Engr.Dr. Aliyu Abdulhameed Bello (Head of Department of Chemical Engineering)",
+            address: "Address: 303 Housing Estate Opposite Gate one Unimaid.",
+            phone: "Phone Number: 09070013463",
+            email: "aliyub@unimaid.edu.ng"
+          }
+        ]
+      }
+    };
+
+    // --------- STATE
+    const STORAGE_KEY = "cv_builder_data_v1";
+    let state = loadSaved() || structuredClone(DEFAULT_DATA);
+
+    // --------- HELPERS
+    const $ = (id) => document.getElementById(id);
+    const escapeHtml = (s="") => s.replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
+    const setText = (id, value) => { $(id).textContent = value ?? ""; };
+    const setHtml = (id, html) => { $(id).innerHTML = html; };
+
+    function save(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+    function loadSaved(){
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      }catch{ return null; }
+    }
+
+    // --------- RENDER FORM BUILDERS
+    function renderSkillsForm(){
+      const root = $("skillsForm");
+      root.innerHTML = "";
+
+      state.skills.forEach((s, idx) => {
+        const card = document.createElement("div");
+        card.className = "itemCard";
+        card.innerHTML = `
+          <div class="itemCardHead">
+            <strong>Skill ${idx+1}</strong>
+            <button class="btnMini btnDanger" type="button" data-action="remove-skill" data-idx="${idx}">Remove</button>
+          </div>
+          <div class="label">Text</div>
+          <textarea data-bind="skills.${idx}.text">${escapeHtml(s.text)}</textarea>
+        `;
+        root.appendChild(card);
+      });
+    }
+
+    function renderWorkForm(){
+      const root = $("workForm");
+      root.innerHTML = "";
+
+      state.work.forEach((w, wIdx) => {
+        const card = document.createElement("div");
+        card.className = "itemCard";
+        card.innerHTML = `
+          <div class="itemCardHead">
+            <strong>Company ${wIdx+1}</strong>
+            <button class="btnMini btnDanger" type="button" data-action="remove-work" data-idx="${wIdx}">Remove Company</button>
+          </div>
+          <div class="label">Company Name</div>
+          <input data-bind="work.${wIdx}.company" value="${escapeHtml(w.company)}" />
+          <div class="label" style="margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
+            <span>Roles under this company</span>
+            <button class="btnMini" type="button" data-action="add-role" data-idx="${wIdx}">+ Add Role</button>
+          </div>
+          <div id="roles-${wIdx}"></div>
+        `;
+        root.appendChild(card);
+
+        const rolesRoot = card.querySelector(`#roles-${wIdx}`);
+        w.roles.forEach((r, rIdx) => {
+          const rCard = document.createElement("div");
+          rCard.className = "itemCard";
+          rCard.style.background = "#fff";
+          rCard.innerHTML = `
+            <div class="itemCardHead">
+              <strong>Role ${rIdx+1}</strong>
+              <button class="btnMini btnDanger" type="button" data-action="remove-role" data-widx="${wIdx}" data-ridx="${rIdx}">Remove Role</button>
+            </div>
+
+            <div class="row2">
+              <div>
+                <div class="label">Title</div>
+                <input data-bind="work.${wIdx}.roles.${rIdx}.title" value="${escapeHtml(r.title)}" />
+              </div>
+              <div>
+                <div class="label">Dates</div>
+                <input data-bind="work.${wIdx}.roles.${rIdx}.dates" value="${escapeHtml(r.dates)}" />
+              </div>
+            </div>
+
+            <div class="label">Location / Notes</div>
+            <input data-bind="work.${wIdx}.roles.${rIdx}.location" value="${escapeHtml(r.location)}" />
+
+            <div class="label" style="margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
+              <span>Bullets</span>
+              <button class="btnMini" type="button" data-action="add-bullet" data-widx="${wIdx}" data-ridx="${rIdx}">+ Add Bullet</button>
+            </div>
+            <div id="bullets-${wIdx}-${rIdx}"></div>
+          `;
+          rolesRoot.appendChild(rCard);
+
+          const bulletsRoot = rCard.querySelector(`#bullets-${wIdx}-${rIdx}`);
+          r.bullets.forEach((b, bIdx) => {
+            const bWrap = document.createElement("div");
+            bWrap.className = "itemCard";
+            bWrap.style.background = "#fafafa";
+            bWrap.innerHTML = `
+              <div class="itemCardHead">
+                <strong>Bullet ${bIdx+1}</strong>
+                <button class="btnMini btnDanger" type="button" data-action="remove-bullet" data-widx="${wIdx}" data-ridx="${rIdx}" data-bidx="${bIdx}">Remove</button>
+              </div>
+              <textarea data-bind="work.${wIdx}.roles.${rIdx}.bullets.${bIdx}">${escapeHtml(b)}</textarea>
+            `;
+            bulletsRoot.appendChild(bWrap);
+          });
+        });
+      });
+    }
+
+    function renderEduForm(){
+      const root = $("eduForm");
+      root.innerHTML = "";
+      state.education.forEach((e, idx) => {
+        const card = document.createElement("div");
+        card.className = "itemCard";
+        card.innerHTML = `
+          <div class="itemCardHead">
+            <strong>Education ${idx+1}</strong>
+            <button class="btnMini btnDanger" type="button" data-action="remove-edu" data-idx="${idx}">Remove</button>
+          </div>
+          <div class="label">School</div>
+          <input data-bind="education.${idx}.school" value="${escapeHtml(e.school)}" />
+          <div class="row2">
+            <div>
+              <div class="label">Year</div>
+              <input data-bind="education.${idx}.year" value="${escapeHtml(e.year)}" />
+            </div>
+            <div>
+              <div class="label">Detail</div>
+              <input data-bind="education.${idx}.detail" value="${escapeHtml(e.detail)}" />
+            </div>
+          </div>
+        `;
+        root.appendChild(card);
+      });
+    }
+
+    function renderSimpleListForm(rootId, listPath, title){
+      const root = $(rootId);
+      root.innerHTML = "";
+      const arr = getByPath(listPath);
+      arr.forEach((val, idx) => {
+        const card = document.createElement("div");
+        card.className = "itemCard";
+        card.innerHTML = `
+          <div class="itemCardHead">
+            <strong>${title} ${idx+1}</strong>
+            <button class="btnMini btnDanger" type="button" data-action="remove-simple" data-path="${listPath}" data-idx="${idx}">Remove</button>
+          </div>
+          <div class="label">Text</div>
+          <input data-bind="${listPath}.${idx}" value="${escapeHtml(val)}" />
+        `;
+        root.appendChild(card);
+      });
+    }
+
+    function renderProjectsForm(){
+      const root = $("projectsForm");
+      root.innerHTML = "";
+      state.projects.forEach((p, idx) => {
+        const card = document.createElement("div");
+        card.className = "itemCard";
+        card.innerHTML = `
+          <div class="itemCardHead">
+            <strong>Project ${idx+1}</strong>
+            <button class="btnMini btnDanger" type="button" data-action="remove-project" data-idx="${idx}">Remove</button>
+          </div>
+
+          <div class="row3">
+            <div>
+              <div class="label">Year</div>
+              <input data-bind="projects.${idx}.year" value="${escapeHtml(p.year)}" />
+            </div>
+            <div>
+              <div class="label">Label</div>
+              <input data-bind="projects.${idx}.title" value="${escapeHtml(p.title)}" />
+            </div>
+            <div>
+              <div class="label">Description</div>
+              <input data-bind="projects.${idx}.description" value="${escapeHtml(p.description)}" />
+            </div>
+          </div>
+        `;
+        root.appendChild(card);
+      });
+    }
+
+    function renderRefsForm(){
+      $("refMode").value = state.references.mode;
+      const root = $("refsForm");
+      root.innerHTML = "";
+
+      state.references.items.forEach((r, idx) => {
+        const card = document.createElement("div");
+        card.className = "itemCard";
+        card.innerHTML = `
+          <div class="itemCardHead">
+            <strong>Reference ${idx+1}</strong>
+            <button class="btnMini btnDanger" type="button" data-action="remove-ref" data-idx="${idx}">Remove</button>
+          </div>
+          <div class="label">Name / Title</div>
+          <input data-bind="references.items.${idx}.who" value="${escapeHtml(r.who)}" />
+          <div class="label">Address</div>
+          <input data-bind="references.items.${idx}.address" value="${escapeHtml(r.address)}" />
+          <div class="label">Phone</div>
+          <input data-bind="references.items.${idx}.phone" value="${escapeHtml(r.phone)}" />
+          <div class="label">Email</div>
+          <input data-bind="references.items.${idx}.email" value="${escapeHtml(r.email)}" />
+        `;
+        root.appendChild(card);
+      });
+    }
+
+    // --------- PREVIEW RENDERERS
+    function renderPreview(){
+      // Header
+      setText("prevFirst", state.header.firstName || "");
+      setText("prevLast", state.header.lastName || "");
+      setText("prevAddress", state.header.addressLine || "");
+      setText("prevPhone", state.header.phone || "");
+
+      setText("prevEmail", state.header.email || "");
+      $("prevEmailLink").href = state.header.email ? `mailto:${state.header.email}` : "#";
+
+      // Summary
+      setText("prevSummary", state.summary || "");
+
+      // Skills
+      setHtml("prevSkills", state.skills.map(s => `<li>${escapeHtml(s.text || "")}</li>`).join(""));
+
+      // Work
+      const workHtml = state.work.map(company => {
+        const rolesHtml = company.roles.map(role => {
+          const bullets = (role.bullets || []).map(b => `<li>${escapeHtml(b || "")}</li>`).join("");
+          return `
+            <div style="margin-top:10px;">
+              <div class="row" style="margin-top:8px;">
+                <div class="left" style="font-weight:800;">${escapeHtml(role.title || "")}</div>
+                <div class="right">${escapeHtml(role.dates || "")}</div>
+              </div>
+              ${role.location ? `<p class="sub">${escapeHtml(role.location)}</p>` : ``}
+              ${bullets ? `<ul class="list">${bullets}</ul>` : ``}
+            </div>
+          `;
+        }).join("");
+
+        return `
+          <div class="block">
+            <div class="row">
+              <div class="left">${escapeHtml(company.company || "")}</div>
+              <div class="right"></div>
+            </div>
+            ${rolesHtml}
+          </div>
+        `;
+      }).join("");
+      setHtml("prevWork", workHtml);
+
+      // Education
+      const eduHtml = state.education.map(e => `
+        <div class="block">
+          <div class="row">
+            <div class="left">${escapeHtml(e.school || "")}</div>
+            <div class="right">${escapeHtml(e.year || "")}</div>
+          </div>
+          <p class="sub">${escapeHtml(e.detail || "")}</p>
+        </div>
+      `).join("");
+      setHtml("prevEdu", eduHtml);
+
+      // Certs
+      setHtml("prevCerts", state.certifications.map(c => `<li>${escapeHtml(c || "")}</li>`).join(""));
+
+      // Bodies
+      setHtml("prevBodies", state.bodies.map(b => `<li>${escapeHtml(b || "")}</li>`).join(""));
+
+      // Projects
+      const projHtml = state.projects.map(p => `
+        <div class="block">
+          <div class="row">
+            <div class="left">${escapeHtml((p.title || "") + ":")}</div>
+            <div class="right">${escapeHtml(p.year || "")}</div>
+          </div>
+          <p class="sub">${escapeHtml(p.description || "")}</p>
+        </div>
+      `).join("");
+      setHtml("prevProjects", projHtml);
+
+      // Hobbies
+      setText("prevHobbies", state.hobbies || "");
+
+      // References
+      const mode = state.references.mode;
+      const fillRoot = $("prevRefsFill");
+      const requestP = $("prevRefsRequest");
+
+      if(mode === "request"){
+        fillRoot.style.display = "none";
+        requestP.style.display = "block";
+      } else {
+        fillRoot.style.display = "block";
+        requestP.style.display = "none";
+      }
+
+      const refsHtml = state.references.items.map(r => `
+        <div class="ref">
+          <p class="who">${escapeHtml(r.who || "")}</p>
+          <p class="line">${escapeHtml(r.address || "")}</p>
+          <p class="line">${escapeHtml(r.phone || "")}</p>
+          <p class="line">Email: <a href="${r.email ? `mailto:${escapeHtml(r.email)}` : "#"}">${escapeHtml(r.email || "")}</a></p>
+        </div>
+      `).join("");
+      fillRoot.innerHTML = refsHtml;
+    }
+
+    // --------- PATH UTIL
+    function getByPath(path){
+      return path.split(".").reduce((acc, k) => acc?.[k], state);
+    }
+    function setByPath(path, value){
+      const parts = path.split(".");
+      const last = parts.pop();
+      const obj = parts.reduce((acc, k) => acc[k], state);
+      obj[last] = value;
+    }
+
+    // --------- MAIN FORM BINDINGS
+    function bindBaseFields(){
+      $("firstName").value = state.header.firstName;
+      $("lastName").value = state.header.lastName;
+      $("addressLine").value = state.header.addressLine;
+      $("phone").value = state.header.phone;
+      $("email").value = state.header.email;
+
+      $("summary").value = state.summary;
+      $("hobbies").value = state.hobbies;
+      $("refMode").value = state.references.mode;
+    }
+
+    function wireBaseListeners(){
+      const map = [
+        ["firstName", "header.firstName"],
+        ["lastName", "header.lastName"],
+        ["addressLine", "header.addressLine"],
+        ["phone", "header.phone"],
+        ["email", "header.email"],
+        ["summary", "summary"],
+        ["hobbies", "hobbies"],
+      ];
+
+      map.forEach(([id, path]) => {
+        $(id).addEventListener("input", (e) => {
+          setByPath(path, e.target.value);
+          save();
+          renderAll();
+        });
+      });
+
+      $("refMode").addEventListener("change", (e) => {
+        state.references.mode = e.target.value;
+        save();
+        renderAll();
+      });
+    }
+
+    // Delegate changes for dynamic inputs using data-bind
+    function wireDynamicBindings(){
+      document.addEventListener("input", (e) => {
+        const el = e.target;
+        const bind = el.getAttribute && el.getAttribute("data-bind");
+        if(!bind) return;
+        setByPath(bind, el.value);
+        save();
+        renderPreview(); // only update preview for speed
+      });
+
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest && e.target.closest("button[data-action]");
+        if(!btn) return;
+
+        const action = btn.getAttribute("data-action");
+
+        // Skills
+        if(action === "remove-skill"){
+          const idx = Number(btn.getAttribute("data-idx"));
+          state.skills.splice(idx, 1);
+        }
+
+        // Work
+        if(action === "remove-work"){
+          const idx = Number(btn.getAttribute("data-idx"));
+          state.work.splice(idx, 1);
+        }
+        if(action === "add-role"){
+          const wIdx = Number(btn.getAttribute("data-idx"));
+          state.work[wIdx].roles.push({ title:"New Role", dates:"", location:"", bullets:[""] });
+        }
+        if(action === "remove-role"){
+          const wIdx = Number(btn.getAttribute("data-widx"));
+          const rIdx = Number(btn.getAttribute("data-ridx"));
+          state.work[wIdx].roles.splice(rIdx, 1);
+        }
+        if(action === "add-bullet"){
+          const wIdx = Number(btn.getAttribute("data-widx"));
+          const rIdx = Number(btn.getAttribute("data-ridx"));
+          state.work[wIdx].roles[rIdx].bullets.push("");
+        }
+        if(action === "remove-bullet"){
+          const wIdx = Number(btn.getAttribute("data-widx"));
+          const rIdx = Number(btn.getAttribute("data-ridx"));
+          const bIdx = Number(btn.getAttribute("data-bidx"));
+          state.work[wIdx].roles[rIdx].bullets.splice(bIdx, 1);
+        }
+
+        // Education
+        if(action === "remove-edu"){
+          const idx = Number(btn.getAttribute("data-idx"));
+          state.education.splice(idx, 1);
+        }
+
+        // Simple lists (certifications, bodies)
+        if(action === "remove-simple"){
+          const path = btn.getAttribute("data-path");
+          const idx = Number(btn.getAttribute("data-idx"));
+          const arr = getByPath(path);
+          arr.splice(idx, 1);
+        }
+
+        // Projects
+        if(action === "remove-project"){
+          const idx = Number(btn.getAttribute("data-idx"));
+          state.projects.splice(idx, 1);
+        }
+
+        // References
+        if(action === "remove-ref"){
+          const idx = Number(btn.getAttribute("data-idx"));
+          state.references.items.splice(idx, 1);
+        }
+
+        save();
+        renderAll();
+      });
+    }
+
+    // --------- BUTTONS (Add/Reset/Save/Print)
+    function wireButtons(){
+      $("addSkillBtn").addEventListener("click", () => {
+        state.skills.push({ text: "New skill..." });
+        save(); renderAll();
+      });
+
+      $("addWorkBtn").addEventListener("click", () => {
+        state.work.push({
+          company: "New Company",
+          roles: [{ title:"New Role", dates:"", location:"", bullets:[""] }]
+        });
+        save(); renderAll();
+      });
+
+      $("addEduBtn").addEventListener("click", () => {
+        state.education.push({ school:"New School", year:"", detail:"" });
+        save(); renderAll();
+      });
+
+      $("addCertBtn").addEventListener("click", () => {
+        state.certifications.push("New certification...");
+        save(); renderAll();
+      });
+
+      $("addBodyBtn").addEventListener("click", () => {
+        state.bodies.push("New professional body...");
+        save(); renderAll();
+      });
+
+      $("addProjectBtn").addEventListener("click", () => {
+        state.projects.push({ year:"", title:"Project", description:"" });
+        save(); renderAll();
+      });
+
+      $("addRefBtn").addEventListener("click", () => {
+        state.references.items.push({ who:"New Reference", address:"Address:", phone:"Phone:", email:"" });
+        save(); renderAll();
+      });
+
+      $("resetBtn").addEventListener("click", () => {
+        state = structuredClone(DEFAULT_DATA);
+        save();
+        renderAll();
+      });
+
+      $("saveBtn").addEventListener("click", () => {
+        save();
+        alert("Saved in this browser.");
+      });
+
+      function printNow(btnId){
+        const btn = $(btnId);
+        btn.style.display = "none";     // hide immediately after click
+        window.print();
+        // optional: bring back after print
+        setTimeout(() => { btn.style.display = ""; }, 600);
+      }
+      $("printBtnForm").addEventListener("click", ()=> printNow("printBtnForm"));
+      $("printBtnPreview").addEventListener("click", ()=> printNow("printBtnPreview"));
+    }
+
+    // --------- RENDER ALL
+    function renderAll(){
+      // base fields
+      bindBaseFields();
+
+      // dynamic forms
+      renderSkillsForm();
+      renderWorkForm();
+      renderEduForm();
+      renderSimpleListForm("certForm", "certifications", "Certification");
+      renderSimpleListForm("bodiesForm", "bodies", "Body");
+      renderProjectsForm();
+      renderRefsForm();
+
+      // preview
+      renderPreview();
+    }
+
+    // --------- INIT
+    function init(){
+      wireBaseListeners();
+      wireDynamicBindings();
+      wireButtons();
+      renderAll();
+    }
+    init();
   </script>
 </body>
 </html>
