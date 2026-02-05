@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yohanna Joshua — Resume</title>
+
+  <!-- Font (similar clean modern style) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --ink:#111827;
+      --muted:#4b5563;
+      --muted2:#6b7280;
+      --line:#e5e7eb;
+      --red:#c1121f;
+      --bar:#111111;
+      --paper:#ffffff;
+      --bg:#f3f4f6;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Page */
+    .wrap{
+      max-width: 920px;
+      margin: 28px auto;
+      padding: 0 14px;
+    }
+    .sheet{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding: 28px 28px 22px;
+      box-shadow: 0 12px 30px rgba(17,24,39,.06);
+    }
+
+    /* Header */
+    .name{
+      margin: 0 0 10px 0;
+      font-size: 40px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .name .red{ color:var(--red); }
+
+    .contactbar{
+      background:var(--bar);
+      color:#fff;
+      border-radius:8px;
+      padding:10px 12px;
+      font-size:13px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+    }
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:2px 0;
+      white-space:nowrap;
+    }
+    .sep{
+      opacity:.45;
+      padding:0 6px;
+      user-select:none;
+    }
+    .contactbar a{
+      color:#fff;
+      text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,.35);
+    }
+
+    /* Print button */
+    .actions{
+      display:flex;
+      justify-content:flex-end;
+      margin-top:14px;
+    }
+    #printBtn{
+      appearance:none;
+      border:0;
+      background:#0f172a;
+      color:#fff;
+      font-weight:700;
+      font-size:13px;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      box-shadow: 0 10px 20px rgba(2,6,23,.12);
+    }
+    #printBtn:hover{ background:#111c33; }
+    #printBtn:focus{ outline: 3px solid rgba(59,130,246,.35); outline-offset:2px; }
+    .btnIcon{ width:16px; height:16px; display:block; }
+
+    /* Sections */
+    .section{ margin-top: 18px; }
+    .section-title{
+      margin: 0;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .underline{
+      height:2px;
+      background:var(--red);
+      margin: 8px 0 12px;
+      border-radius: 999px;
+      opacity:.9;
+    }
+
+    .p{
+      margin: 0 0 10px 0;
+      color:var(--muted);
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+
+    /* Skills bullets */
+    .bullets{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 30px;
+      padding-left: 18px;
+      margin: 0;
+      color:var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+    .bullets li{ margin: 0; }
+    @media (max-width: 780px){
+      .bullets{ grid-template-columns: 1fr; }
+      .name{ font-size:34px; }
+      .sheet{ padding:20px; }
+    }
+
+    /* Timeline rows (role left, date right) */
+    .row{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      margin: 0 0 6px 0;
+    }
+    .row .left{
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .row .right{
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--muted2);
+      white-space:nowrap;
+    }
+    .sub{
+      margin: 0 0 10px 0;
+      color:var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+    .smallcap{
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .list{
+      margin: 8px 0 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+    .list li{ margin: 4px 0; }
+
+    .block{
+      padding: 10px 0 2px;
+      border-bottom: 1px solid var(--line);
+    }
+    .block:last-child{ border-bottom:0; }
+
+    /* References cards */
+    .ref{
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: #fafafa;
+      margin-top: 10px;
+    }
+    .ref .who{ font-weight: 800; color: var(--ink); margin: 0 0 6px 0; }
+    .ref .line{ margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.55; }
+
+    /* Print */
+    @media print{
+      body{ background:#fff; }
+      .wrap{ margin:0; max-width:none; padding:0; }
+      .sheet{ border:0; border-radius:0; box-shadow:none; padding: 0.6in; }
+      #printBtn{ display:none !important; }
+      .actions{ display:none !important; }
+      a{ color: inherit !important; text-decoration: none !important; border:0 !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="sheet">
+
+      <h1 class="name">
+        YOHANNA <span class="red">JOSHUA</span>
+      </h1>
+
+      <div class="contactbar" aria-label="Contact information">
+        <span class="pill">Government Girls Secondary School Daura, Daura Local Government.</span>
+        <span class="sep">|</span>
+        <span class="pill">07046593428, 07017803690.</span>
+        <span class="sep">|</span>
+        <span class="pill">Email: <a href="mailto:joshuayohanna191@gmail.com">joshuayohanna191@gmail.com</a></span>
+      </div>
+
+      <div class="actions">
+        <button id="printBtn" type="button" aria-label="Print or Save as PDF">
+          <svg class="btnIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9V2h12v7" />
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+            <path d="M6 14h12v8H6z" />
+          </svg>
+          Print / Save as PDF
+        </button>
+      </div>
+
+      <!-- PROFESSIONAL SUMMARY (UPDATED FOR SITE ENGINEER) -->
+      <section class="section">
+        <h2 class="section-title">Professional Summary</h2>
+        <div class="underline"></div>
+        <p class="p" style="margin-bottom:0;">
+          Site Engineer with hands-on experience supporting construction activities, supervising site operations, and coordinating materials and workforce to maintain quality and safety standards. Skilled in site documentation, inventory/material control, and effective communication with supervisors, engineers, and site teams to keep work progressing on schedule. Strong technical foundation with B.Eng Chemical Engineering, AutoCAD training, and HSE knowledge, with a track record of reliability in fast-paced project environments.
+        </p>
+      </section>
+
+      <!-- SKILLS (TUNED FOR SITE ENGINEER) -->
+      <section class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="underline"></div>
+
+        <ul class="bullets">
+          <li><span class="smallcap">Site Supervision:</span> Coordinating day-to-day site activities, monitoring workmanship, and supporting engineers/supervisors to meet project targets.</li>
+          <li><span class="smallcap">Materials & Inventory Control:</span> Storekeeping, issuing materials, tracking usage, and maintaining stock availability for continuous site operations.</li>
+          <li><span class="smallcap">HSE & Compliance:</span> Basic safety enforcement, hazard awareness, and supporting safe work practices and site orderliness.</li>
+          <li><span class="smallcap">Documentation & Reporting:</span> Record keeping, daily site updates, and communication across teams for organized project tracking.</li>
+          <li><span class="smallcap">Technical Tools:</span> AutoCAD, Microsoft Word, Microsoft Excel.</li>
+          <li><span class="smallcap">Communication:</span> Clear written and verbal communication; strong teamwork and coordination skills.</li>
+        </ul>
+      </section>
+
+      <!-- WORK HISTORY (UPDATED AL-MANSOUR ROLE WITH ACHIEVEMENT BULLETS) -->
+      <section class="section">
+        <h2 class="section-title">Work History</h2>
+        <div class="underline"></div>
+
+        <div class="block">
+          <div class="row">
+            <div class="left">Al-Mansour Construction (Nig) Ltd.</div>
+            <div class="right"></div>
+          </div>
+
+          <div class="row" style="margin-top:8px;">
+            <div class="left" style="font-weight:700;">Site Engineer</div>
+            <div class="right">Feb 2022 – Jun 2023</div>
+          </div>
+          <p class="sub">Shagamu Site, Ogun State</p>
+          <ul class="list">
+            <li>Supported daily site execution by coordinating materials, labor, and work activities to maintain steady progress on construction tasks.</li>
+            <li>Assisted with on-site supervision and quality checks, ensuring workmanship aligned with project requirements and instructions from senior engineers.</li>
+            <li>Maintained daily site records and updates to support tracking of activities, resource usage, and work completion status.</li>
+            <li>Promoted safe work practices by reporting hazards and supporting compliance with basic HSE rules and site housekeeping standards.</li>
+          </ul>
+
+          <div class="row" style="margin-top:14px;">
+            <div class="left" style="font-weight:700;">Supervisor / Storekeeper</div>
+            <div class="right">Jun 2023 – Apr 2025</div>
+          </div>
+          <p class="sub">Lekki-Garden (Banana Island) • Karishma CDK (Shagamu, Ogun)</p>
+          <ul class="list">
+            <li>Supervised site support activities and ensured timely availability of materials/tools required for ongoing site works.</li>
+            <li>Managed store operations: received, issued, and tracked construction materials to reduce shortages and improve accountability.</li>
+            <li>Coordinated with site leadership to plan material requests and ensure uninterrupted workflow across site teams.</li>
+            <li>Kept inventory records and assisted with reporting to support cost control and proper material utilization.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="left">Maiduguri Flour Mill.</div>
+            <div class="right"></div>
+          </div>
+
+          <div class="row" style="margin-top:8px;">
+            <div class="left" style="font-weight:700;">Production Engineer</div>
+            <div class="right">Nov 2021 – Jun 2022</div>
+          </div>
+
+          <p class="sub"><span class="smallcap">Job Done:</span></p>
+          <ul class="list">
+            <li>Production of massa flour and massa vita, after NNPC filling station Busari Road,</li>
+            <li>Maiduguri Borno state.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="left">OXFAM NGO Maiduguri Borno State.</div>
+            <div class="right"></div>
+          </div>
+
+          <div class="row" style="margin-top:8px;">
+            <div class="left" style="font-weight:700;">Hygiene Promotion Assistant</div>
+            <div class="right">Jul 2020 – Nov 2021</div>
+          </div>
+
+          <p class="sub"><span class="smallcap">Job Done:</span></p>
+          <ul class="list">
+            <li>Educating and Distribution of Food items at Gajigana Maiduguri Borno State</li>
+            <li>Distribution of Food items at Monguno Maiduguri Borno State.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="left">Today’s Super Store Behind Government House Maiduguri Borno State.</div>
+            <div class="right"></div>
+          </div>
+
+          <div class="row" style="margin-top:8px;">
+            <div class="left" style="font-weight:700;">Sales Representative</div>
+            <div class="right">2019 – 2021</div>
+          </div>
+
+          <p class="sub"><span class="smallcap">Job Done:</span></p>
+          <ul class="list">
+            <li>Cleaning, Arranging, Checking of expiring dates and selling of groceries. 2019–2020</li>
+            <li>Merchandiser. 2020–2021</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="underline"></div>
+
+        <div class="block">
+          <div class="row">
+            <div class="left">University of Maiduguri Borno State</div>
+            <div class="right">2022</div>
+          </div>
+          <p class="sub">B.Eng Chemical Engineering (Second Class Lower (3.45))</p>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="left">Federal Science and Technical College Jalingo, Taraba State</div>
+            <div class="right">2016</div>
+          </div>
+          <p class="sub">Senior School Certificate Examination (SSCE).</p>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="left">Anchor Model School, Chibok Local Government Borno State</div>
+            <div class="right">2010</div>
+          </div>
+          <p class="sub">Primary School Leaving Certificate.</p>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+      <section class="section">
+        <h2 class="section-title">Certifications</h2>
+        <div class="underline"></div>
+        <ul class="list" style="margin-top:0;">
+          <li>National Youth Service Corp (2025)</li>
+          <li>Insight Global Training Academy — Certificate in Environment, Health &amp; Safety Training. (2024)</li>
+          <li>University of Maiduguri Borno State — Certificate of Proficiency in Aspen Engineering Software Suit. (2023)</li>
+          <li>University of Maiduguri Borno State — Certificate in AutoCAD. (2021)</li>
+          <li>American Institution of Chemical Engineering Academy — Certificate in Risk Based Process Safety. (2021)</li>
+        </ul>
+      </section>
+
+      <!-- PROFESSIONAL BODIES -->
+      <section class="section">
+        <h2 class="section-title">Professional Bodies</h2>
+        <div class="underline"></div>
+        <ul class="list" style="margin-top:0;">
+          <li>Graduate Member of Nigerian Society of Engineers</li>
+          <li>Member of Nigerian Society of Chemical Engineers</li>
+          <li>Member of International Association of Engineers</li>
+          <li>Member of American Institution of Chemical Engineers</li>
+        </ul>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section">
+        <h2 class="section-title">Projects and Volunteering</h2>
+        <div class="underline"></div>
+
+        <div class="block">
+          <div class="row">
+            <div class="left">Group Project:</div>
+            <div class="right">2018</div>
+          </div>
+          <p class="sub">Designing of Heat Exchanger Using AutoCAD.</p>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="left">Design Project:</div>
+            <div class="right">2022</div>
+          </div>
+          <p class="sub">Design a Plant that produces 250tonnes of Acrylic acid per day (not yet Published).</p>
+        </div>
+
+        <div class="block">
+          <div class="row">
+            <div class="left">Research Project:</div>
+            <div class="right">2024</div>
+          </div>
+          <p class="sub">Extraction of Groundnut oil using Chemical and Mechanical Techniques and, Their Characterization (not yet Published).</p>
+        </div>
+      </section>
+
+      <!-- HOBBIES -->
+      <section class="section">
+        <h2 class="section-title">Hobbies</h2>
+        <div class="underline"></div>
+        <p class="p" style="margin-bottom:0;">Drafting and listening to music</p>
+      </section>
+
+      <!-- REFERENCES -->
+      <section class="section">
+        <h2 class="section-title">References</h2>
+        <div class="underline"></div>
+
+        <div class="ref">
+          <p class="who">Engr. SUNDAY OLUWOLE EKUNDARE (Almansour Engineering and Contracting limited).</p>
+          <p class="line">Address: Victoria Island Lagos</p>
+          <p class="line">Phone number: 08035125520, 08097348913</p>
+          <p class="line">Email: <a href="mailto:sunekonsult2013@gmail.com">sunekonsult2013@gmail.com</a></p>
+        </div>
+
+        <div class="ref">
+          <p class="who">Engr.Dr. Aliyu Abdulhameed Bello (Head of Department of Chemical Engineering)</p>
+          <p class="line">Address: 303 Housing Estate Opposite Gate one Unimaid.</p>
+          <p class="line">Phone Number: 09070013463</p>
+          <p class="line">Email: <a href="mailto:aliyub@unimaid.edu.ng">aliyub@unimaid.edu.ng</a></p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById("printBtn");
+    btn.addEventListener("click", () => {
+      // Hide immediately after click (and also hidden in print via CSS)
+      btn.style.display = "none";
+      window.print();
+    });
+  </script>
+</body>
+</html>
